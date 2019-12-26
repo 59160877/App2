@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -46,18 +46,24 @@ export class RegisterComponent {
       "SUCCESS!! :-)\n\n" + JSON.stringify(this.registerForm.value, null, 4)
     );
 
+    let url = "https://script.google.com/macros/s/AKfycbzFx4rDH-py3F-vmPQErbllXTN4wWQZq73tZ2IcrDMlI2bR4NE/exec?path=/register"
+    let json = {
+      "email": "suriya_e@protossgroup.com",
+      "fullName": "Suriya Eiamerb",
+      "telephoneNumber": "0655941964",
+      "course": "SQL"
+    };
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'appclication/x-www-form-urlencoded'
+      })
+    }
+
     this.httpClient
-      .post("https://script.google.com/macros/s/AKfycbzFx4rDH-py3F-vmPQErbllXTN4wWQZq73tZ2IcrDMlI2bR4NE/exec?path=/register",
-        {
-          "email": "suriya_e@protossgroup.com",
-          "fullName": "Suriya Eiamerb",
-          "telephoneNumber": "0655941964",
-          "course": "SQL"
-        })
-      .subscribe(
-        response => {
-          this.registerForm = response['registerForm'];
-        });
+      .post(url, json, httpOptions).toPromise().then(data => {
+        console.log('response = ' + data)
+      });
 
     this.httpClient
       .get('https://script.google.com/macros/s/AKfycbzFx4rDH-py3F-vmPQErbllXTN4wWQZq73tZ2IcrDMlI2bR4NE/exec?path=/register')
@@ -65,6 +71,7 @@ export class RegisterComponent {
 
         this.registerForm = response['registerForm'];
       });
+
 
   }
 
