@@ -1,0 +1,73 @@
+<div id="registerForm" class="widget widget-section">
+    <div class="row">
+
+        <div class="container">
+
+            <div id="registerBox" class="widget widget-box"></div>
+
+            <div id="detailForm" class="widget widget-form detail-cod" data-orientation="vertical">
+
+                <h1 class="display-4 text-center">สมัครเรียนออนไลน์ในราคาพิเศษ</h1>
+                <br>
+
+
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+                    <div class="form-group">
+                        <input type="text" formControlName="email" class="form-control" placeholder="อีเมล"
+                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" formControlName="name" placeholder="ชื่อ นามสกุล" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required">Name is required</div>
+                            <div *ngIf="f.name.errors.name">Name must be a valid name address</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" formControlName="phone" placeholder="ชื่อ นามสกุล" class="form-control"
+                            placeholder="เบอร์โทร (เขียนติดกัน เช่น 0817779999)"
+                            [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+                        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                            <div *ngIf="f.phone.errors.required">Phone is required</div>
+                            <div *ngIf="f.phone.errors.phone">Phone must be a valid phone address</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" formControlName="address" placeholder="ชื่อ นามสกุล" class="form-control"
+                            placeholder="ที่อยู่สำหรับจัดส่งคูปอง"
+                            [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+                        <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                            <div *ngIf="f.address.errors.required">Address is required</div>
+                            <div *ngIf="f.address.errors.address">Address must be a valid address address</div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-success mr-1 btn-lg">สมัครเลย</button>
+                    </div>
+
+                    <div class="text-center">
+                        <br>
+                        <div>
+                            สมัครวันนี้เก็บเงินปลายทาง จัดส่งฟรีทั่วประเทศ!
+                            เจ้าหน้าที่ของเราจะติดต่อกลับเพื่อยืนยันรายการใน 1-2
+                            วัน
+                            เมื่อคอร์สจัดส่งถึงมือคุณแล้ว ค่อยชำระเงินปลายทาง</div>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

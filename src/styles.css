@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+.form-control.ng-invalid.ng-dirty,
+.ng-touched
+ {
+    border-color: #dc3545;
+}
+
+.form-control.ng-invalid.ng-dirty:focus, .form-control.ng-invalid.ng-touched:focus {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    border-color: #dc3545;
+}
+
+.form-control.ng-invalid.ng-dirty:focus~.invalid-feedback, .form-control.ng-invalid.ng-touched:focus~.invalid-feedback {
+    display: block;
+}
